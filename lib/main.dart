@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_player_ui/neumorphic_box.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 void main() => runApp(const MusicPlayer());
 
@@ -23,6 +24,9 @@ class _MusicPlayerState extends State<MusicPlayer> {
             child: Center(
               child: Column(
                 children: [
+                  const SizedBox(
+                    height: 10.0,
+                  ),
                   // back button and menu button
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,7 +105,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                   ),
 
                   const SizedBox(
-                    height: 25,
+                    height: 30,
                   ),
 
                   // start time, shuffle button, repeat button, end time
@@ -116,9 +120,57 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     ],
                   ),
 
+                  const SizedBox(height: 30.0),
+
                   // linear bar
+                  NeuBox(
+                    child: LinearPercentIndicator(
+                      lineHeight: 10,
+                      percent: 0.8,
+                      progressColor: Colors.green,
+                      backgroundColor: Colors.transparent,
+                    ),
+                  ),
+
+                  const SizedBox(height: 30.0),
 
                   // previous song, pause/play button, skip next song button
+
+                  SizedBox(
+                    height: 80.0,
+                    child: Row(
+                      children: const [
+                        Expanded(
+                          child: NeuBox(
+                            child: Icon(
+                              Icons.skip_previous,
+                              size: 32.0,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.0),
+                            child: NeuBox(
+                              child: Icon(
+                                Icons.play_arrow,
+                                size: 32.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: NeuBox(
+                            child: Icon(
+                              Icons.skip_next,
+                              size: 32.0,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
